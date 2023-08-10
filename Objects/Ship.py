@@ -25,13 +25,17 @@ class Ship(RoomObject):
         """
 
         if key[pygame.K_w]:
-            self.y_speed -= 5
-        elif key[pygame.K_s]:
-            self.y_speed += 5
-        elif key[pygame.K_d]:
-            self.x_speed += 5
-        elif key[pygame.K_a]:
-            self.x_speed -= 5
+            self.y_speed = -5
+            self.y_speed -= 0.1
+        if key[pygame.K_s]:
+            self.y_speed = 5
+            self.y_speed -= 0.1
+        if key[pygame.K_d]:
+            self.x_speed = 5
+            self.x_speed -= 0.1
+        if key[pygame.K_a]:
+            self.x_speed = -5
+            self.x_speed -= 0.1
 
     def keep_in_room(self):
         """
@@ -41,8 +45,14 @@ class Ship(RoomObject):
             self.y = 0
         elif self.y + self.height > Globals.SCREEN_HEIGHT:
             self.y = Globals.SCREEN_HEIGHT - self.height
+    def keep_in_room2(self):
+        if self.x < 0:
+            self.x = 0
+        elif self.x + self.width > Globals.SCREEN_WIDTH:
+            self.x = Globals.SCREEN_WIDTH - self.width
     def step(self):
         """
         Determine what happens to the Ship on each click of the game clock
         """
         self.keep_in_room()
+        self.keep_in_room2()
