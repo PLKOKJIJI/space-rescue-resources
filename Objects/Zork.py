@@ -29,6 +29,7 @@ class Zork(RoomObject):
         astronaut_spawn_time = random.randint(30, 200)
         self.set_timer(astronaut_spawn_time, self.spawn_astronaut)
 
+
     def keep_in_room(self):
         """
         Keeps the Zork inside the top and bottom room limits
