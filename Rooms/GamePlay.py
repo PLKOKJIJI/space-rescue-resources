@@ -21,3 +21,8 @@ class GamePlay(Level):
         self.add_room_object(self.score)
         self.lives = Lives(self, Globals.SCREEN_WIDTH - 150, 20)
         self.add_room_object(self.lives)
+
+
+        self.bg_music = self.load_sound('Music.mp3') 
+
+        self.bg_music.play(loops=1)
